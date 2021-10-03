@@ -1,0 +1,109 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://packages.confluent.io/maven' }
+    maven { url 'https://ksqldb-maven.s3.amazonaws.com/maven/'}
+}
+
+dependencies {
+    implementation 'org.apache.kafka:kafka-clients:2.2.1'
+    implementation 'org.apache.kafka:kafka-streams:2.2.1'
+    implementation 'io.confluent.ksql:ksqldb-api-client:6.1.1'
+}
+
+application {
+    mainClassName = 'com.kafka.ProducerMain'
+}
+
+task(runProducer, dependsOn: 'classes', type: JavaExec) {
+   main = 'com.kafka.simple.ProducerSimple'
+   classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runConsumer, dependsOn: 'classes', type: JavaExec) {
+   main = 'com.kafka.simple.ConsumerSimple'
+   classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runProducerSchemaRegistry, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.schema.ProducerSchemaRegistry'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runConsumerSchemaRegistry, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.schema.ConsumerSchemaRegistry'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runStreamsSimple, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.streams.StreamsSimple'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runStreamsBranchTransformation, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.streams.StreamsBranchTransformation'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runStreamsFilterTransformation, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.streams.StreamsFilterTransformation'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runStreamsMapTransformation, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.streams.StreamsMapTransformation'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runStreamsFlatmapTransformation, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.streams.StreamsFlatMapTransformation'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runStreamsAggTransformation, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.streams.StreamsAggTransformation'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runStreamsJoin, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.streams.StreamsJoin'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runStreamsWindowing, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.streams.StreamsWindowing'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runKsqlDbCreateStream, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.ksqldb.KsqlDbCreateStream'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runKsqlDbDropStream, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.ksqldb.KsqlDbDropStream'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runKsqlDbCreateTable, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.ksqldb.KsqlDbCreateTable'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runKsqlDbDropTable, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.ksqldb.KsqlDbDropTable'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runKsqlDbInsert, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.ksqldb.KsqlDbInsert'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runKsqlDbSelect, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.kafka.ksqldb.KsqlDbSelect'
+    classpath = sourceSets.main.runtimeClasspath
+}
